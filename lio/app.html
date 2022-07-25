@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/lemonmilk" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <title>App</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 100vw;
+        min-height: 100vh;
+        font-family: "Lemon/Milk", sans-serif;
+        font-family: "Lemon/Milk light", sans-serif;
+        overflow-x: hidden;
+      }
+      .main-wrp {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+      .brand-name > a > h1,
+      .brand-footer > a > h1 {
+        color: #d7a88d;
+        font-size: 2rem;
+        text-shadow: 1px 1px 2px #1c1c1c;
+        letter-spacing: 2.5px;
+      }
+
+      .brand-name > a {
+        text-decoration: none;
+      }
+
+      .brand-name,
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo > svg {
+        fill: white;
+        max-width: 70%;
+      }
+
+      .header {
+        display: flex;
+        padding: 10px 120px;
+        background: black;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        z-index: 2;
+      }
+
+      .hamb-men {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+#sidebar {
+  position: absolute;
+  right: -300px;
+  height: 100vh;
+  top: 80px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 200px;
+  white-space: nowrap;
+}
+
+.open {
+  transform: translateX(-300px);
+  transition: all 0.7s ease-in-out;
+}
+
+.side-menu-links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: 20px;
+  gap: 1.2rem;
+  border-right-color: white;
+  height: 100%;
+  align-items: flex-end;
+  position: relative;
+}
+
+.social-m {
+  list-style: none;
+}
+        
+                .social-m > li > a {
+  text-decoration: none;
+  color: #b38972db;
+  font-size: 1.5rem;
+  display: block;
+}
+        
+.social-m {
+display: flex;
+margin: auto;
+  margin-top: auto;
+list-style: none;
+width: 100%;
+justify-content: space-around;
+margin-top: 55vh;
+}
+
+.side-menu-links > li {
+    padding: 0px 1.4rem 0px 1rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+ul.side-menu-links > li > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition:all 120ms ease-in-out;
+    color: #f1c232;
+}
+
+
+.side-menu-links > li > a:hover {
+  color:white;
+  transition:all 120ms ease-in-out;
+}
+
+      .banner {
+        min-height: 65vh;
+        background-repeat: no-repeat;
+        padding-top: 250px;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 50px;
+        height: auto;
+        background-size: cover;
+        background-image: url("https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-banner.jpg");
+      }
+
+      .banner-text {
+        margin: 0 140px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .banner-text > h3 {
+        position: relative;
+        letter-spacing: 8px;
+        font-size: 2rem;
+        color: #d7a88d;
+      }
+
+      .banner-text > p {
+        letter-spacing: 0.5px;
+        color: white;
+        font-weight: 100;
+        font-family: "Lato", sans-serif;
+      }
+
+      .banner-text > h3::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 2px;
+        top: 20px;
+        left: -122px;
+        background: #c4967d;
+      } 
+
+
+      .mem-cont {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .mem-cont > h3::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 2px;
+        top: 25px;
+        left: -122px;
+        background: #c5987e;
+      }
+
+      .mem-cont > h3 {
+        color: #c5987e;
+        position: relative;
+        font-size: 3rem;
+        letter-spacing: 1.5px;
+      }
+
+      .mem-cont > p {
+        font-size: 2em;
+      }
+
+      .mem-text {
+        padding: 50px 200px;
+        position: relative;
+        height:100vh;
+        width:100%;
+      }
+
+      .app-pres {
+          position: absolute;
+          width:80%;
+          height:80%;
+          background-color: black;
+          left:0;
+          right:0;
+          margin: auto;
+          background-image: url('https://thequorum.club/wp-content/themes/quorum/new_templates/images/q-app-image.jpg');
+            background-position: center center;
+      }
+
+      .app-store {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 35px 80px;
+    width: 100%;
+    display: flex;
+    height: 10rem;
+    gap: 20px;
+}
+
+.apple-badge:hover, .google-badge:hover {
+    transform: scale(1.1);
+}
+
+.apple-badge {
+    background-image: url('https://seeklogo.com/images/D/download-on-the-app-store-flat-badge-logo-4582694404-seeklogo.com.png');
+}
+
+.google-badge {
+    background-image: url('https://seeklogo.com/images/G/get-it-on-google-play-badge-logo-8CDE582776-seeklogo.com.png');
+}
+
+.apple-badge, .google-badge {
+    width: 140px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: contain;
+    transition: all 0.2s ease-in-out;
+}
+
+.app-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+      .app-ban-head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 25px 100px;
+    display: flex;
+    flex-direction: column;
+    background: #000000bd;
+    gap: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.app-ban-head > span:nth-child(1) {
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    color: white;
+    font-weight: 800;
+    position: relative;
+}
+
+.app-ban-head> span:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 66px;
+    top: 3px;
+    left: -20px;
+    background-image: linear-gradient(to right, #e8b497, #bc9078);
+}
+
+.app-ban-head > span:nth-child(2) {
+    font-size: 1.2rem;
+    letter-spacing: 1.1px;
+    color: white;
+    font-style: italic;
+}
+
+    
+      .footer {
+        background: #000000;
+        color: #c1947b;
+      }
+      .footer-cont {
+        padding: 20px 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand-footer > a {
+        text-decoration: none;
+      }
+
+      .left-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-align: right;
+        font-size: .8em;
+        letter-spacing: 1px;
+      }
+
+      .close-info > svg {
+        width: 35px;
+        fill: white;
+        right: 25px;
+        position: absolute;
+        top: 25px;
+        cursor: pointer;
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .submit-btn {
+        height: 35px;
+        width: 250px;
+        background: #017481;
+        background-image: linear-gradient(to right, #eab69a, #b48972);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        cursor: pointer;
+        letter-spacing: 5px;
+      }
+
+      .fade-out-cl {
+        animation: fadeOut 500ms ease-in 0ms 1 normal forwards;
+      }
+
+
+      /*Mobile Query*/
+      @media only screen and (max-width: 824px) {
+        .header {
+          padding: 20px;
+          position: relative;
+        }
+
+        .app-ban-head {
+            border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width:100%;
+        }
+        .banner {
+          padding: 50px 0px;
+        }
+
+        .banner-text {
+          margin: auto;
+          padding: 19px;
+        }
+
+        .container {
+          display: flex;
+        }
+
+        .app-pres {
+            width:100%;
+    
+        }
+
+        .perks-cont,
+        .footer-cont,
+        .container {
+          flex-direction: column;
+        }
+
+        .left-footer {
+          text-align: center;
+        }
+
+        .footer-cont {
+          padding: 20px;
+          gap: 1.5rem;
+          text-align: center;
+        }
+
+        .logo {
+          display: none;
+        }
+
+      }
+
+      .social-m > li> a {
+    text-decoration: none;
+    color:#b38972db;
+    padding:4px;
+    font-size:1.5rem;
+    position: absolute;
+    
+}
+
+
+    </style>
+  </head>
+  <body>
+    <div class="main-wrp">
+
+      <div class="header">
+        <div class="logo">
+          <svg class="icon" viewBox="0 0 635 660" style="width: 100px">
+            <path
+              class="is-active"
+              d="M430,0H80a80,80,0,0,0,0,160H225v90H192a80,80,0,0,0,0,160h33V580a80,80,0,0,0,160,0V410h45c113,0,205-92,205-205S543,0,430,0ZM225,380H192a50,50,0,0,1,0-100h33ZM385,206.89c0-.63,0-1.26,0-1.89a45,45,0,1,1,0,1.89ZM430,380l-45,0V280h0L430,280a75,75,0,1,0-75-75V580a50,50,0,0,1-100,0V130H80A50,50,0,0,1,80,30H430c96.49,0,175,78.5,175,175S526.49,380,430,380Z"
+            ></path>
+          </svg>
+        </div>
+        <div class="brand-name">
+          <a href=""><h1>THE BRAND</h1></a>
+        </div>
+        <div class="hamb-men">
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            width="40.75px"
+            height="32.5px"
+            viewBox="0 0 40.75 32.5"
+            enable-background="new 0 0 40.75 32.5"
+            xml:space="preserve"
+          >
+            <g>
+              <rect
+                x="6.407"
+                y="7.774"
+                fill="#FFFFFF"
+                width="27.061"
+                height="1.792"
+              />
+              <rect
+                x="6.407"
+                y="16.199"
+                fill="#FFFFFF"
+                width="27.061"
+                height="1.793"
+              />
+              <rect
+                x="6.407"
+                y="24.625"
+                fill="#FFFFFF"
+                width="27.061"
+                height="1.793"
+              />
+            </g>
+          </svg>
+        </div>
+        <nav id="sidebar">
+          <ul class="side-menu-links">
+            <li><a href="">Benefits</a></li>
+            <li><a href="">Gallery</a></li>
+            <li><a href="">App</a></li>
+            <li><a href="">Contact us</a></li>
+            <ul class="social-m">
+              <li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
+               <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+          </ul>
+          
+         </nav>
+      </div>
+
+      <section class="banner">
+        <div class="banner-text">
+          <h3>THE Q APP</h3>
+          <p>
+            Perfectly positioned for the new normal, our app digitizes processes around the club to ensure a seamless and contactless experience for our members & their guests.
+          </p>
+
+          <p>
+            Members can check in, make reservations, invite guests, RSVP to events, dine, pay and stay updated on all things Q using the app.
+          </p>
+
+
+        </div>
+      </section>
+
+      <section class="mem-text">
+        <div class="app-pres">
+            <div class="app-ban-head">
+                <span>Access</span>
+                <span>At your fingertips</span>
+            </div>
+            <div class="app-store">
+                <div class="apple-badge">
+                <a href="somewhere" class="app-link"></a>
+                </div>
+                <div class="google-badge">
+                  <a href="somewhere" class="app-link"></a>
+                </div>
+            </div>
+            </div>
+      </section>
+      <div class="footer">
+        <div class="footer-cont">
+          <div class="brand-footer">
+            <a href=""><h1>THE BRAND</h1></a>
+          </div>
+          <div class="left-footer">
+            <p>
+              two horizon center, first floor, golf course road, dlf phase 5,
+              <br />
+              sector 43 gurugram, haryana 122002
+            </p>
+            <span>TERMS AND CONDITIONS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+
+      document.querySelectorAll(".close-info").forEach((el) => {
+        el.addEventListener("click", () => {
+          el.parentElement.style.display = "none";
+        });
+      });
+
+      let menBtn = document.querySelector('.hamb-men');
+
+      menBtn.addEventListener('click', ()=>{
+        let sideBar = document.getElementById('sidebar')
+        if (!document.querySelector('.open')) {
+        sideBar.classList.add('open');
+        } else {
+          sideBar.style.transform = 'translate(300px,0)'
+          setTimeout(()=>{
+            sideBar.style.transform = '';
+            sideBar.classList.remove('open');
+            
+          }, 700)
+         
+        }
+      })
+    </script>
+  </body>
+</html>
